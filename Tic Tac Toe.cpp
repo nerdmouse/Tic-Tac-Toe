@@ -21,6 +21,7 @@ using namespace std;
 
 bool gameOver = false;
 int turnCounter{ 0 };
+int counterAdjust;
 
 char playerTurn;
 char player;
@@ -49,291 +50,140 @@ int aiPlayer();
 char checkPlayerWin()
 {
     
-    if (coordinates[0][0] == player && coordinates[0][1] == player)
+    if (coordinates[0][0] == player && coordinates[0][1] == player && coordinates[0][2] != aiCharacter)
     {
         aiMove = '3';
         return aiMove;
     }
-    else if (coordinates[0][1] == player && coordinates[0][2] == player)
+    else if (coordinates[0][1] == player && coordinates[0][2] == player && coordinates[0][0] != aiCharacter)
     {
         aiMove = '1';
         return aiMove;
     }
-    else if (coordinates[0][0] == player && coordinates[0][2] == player)
+    else if (coordinates[0][0] == player && coordinates[0][2] == player && coordinates[0][1] != aiCharacter)
     {
         aiMove = '2';
         return aiMove;
     }
 
-    else if (coordinates[0][0] == player && coordinates[1][0] == player)
+    else if (coordinates[0][0] == player && coordinates[1][0] == player && coordinates[2][0] != aiCharacter)
     {
         aiMove = '7';
         return aiMove;
     }
-    else if (coordinates[0][0] == player && coordinates[2][0] == player)
+    else if (coordinates[0][0] == player && coordinates[2][0] == player && coordinates[1][0] != aiCharacter)
     {
         aiMove = '4';
         return aiMove;
     }
-    else if (coordinates[1][0] == player && coordinates[2][0] == player)
+    else if (coordinates[1][0] == player && coordinates[2][0] == player && coordinates[0][0] != aiCharacter)
     {
         aiMove = '1';
         return aiMove;
     }
 
-    else if (coordinates[0][0] == player && coordinates[1][1] == player)
+    else if (coordinates[0][0] == player && coordinates[1][1] == player && coordinates[2][2] != aiCharacter)
     {
         aiMove = '9';
         return aiMove;
     }
-    else if (coordinates[0][0] == player && coordinates[2][2] == player)
+    else if (coordinates[0][0] == player && coordinates[2][2] == player && coordinates[1][1] != aiCharacter)
     {
         aiMove = '5';
         return aiMove;
     }
-    else if (coordinates[1][1] == player && coordinates[2][2] == player)
+    else if (coordinates[1][1] == player && coordinates[2][2] == player && coordinates[0][0] != aiCharacter)
     {
         aiMove = '1';
         return aiMove;
     }
 
-    else if (coordinates[0][1] == player && coordinates[1][1] == player)
+    else if (coordinates[0][1] == player && coordinates[1][1] == player && coordinates[2][1] != aiCharacter)
     {
         aiMove = '8';
         return aiMove;
     }
-    else if (coordinates[0][1] == player && coordinates[2][1] == player)
+    else if (coordinates[0][1] == player && coordinates[2][1] == player && coordinates[1][1] != aiCharacter)
     {
         aiMove = '5';
         return aiMove;
     }
-    else if (coordinates[1][1] == player && coordinates[2][1] == player)
+    else if (coordinates[1][1] == player && coordinates[2][1] == player && coordinates[0][1] != aiCharacter)
     {
         aiMove = '2';
         return aiMove;
     }
 
-    else if (coordinates[0][2] == player && coordinates[1][2] == player)
+    else if (coordinates[0][2] == player && coordinates[1][2] == player && coordinates[2][2] != aiCharacter)
     {
         aiMove = '9';
         return aiMove;
     }
-    else if (coordinates[1][2] == player && coordinates[2][2] == player)
+    else if (coordinates[1][2] == player && coordinates[2][2] == player && coordinates[0][2] != aiCharacter)
     {
         aiMove = '3';
         return aiMove;
     }
-    else if (coordinates[0][2] == player && coordinates[2][2] == player)
+    else if (coordinates[0][2] == player && coordinates[2][2] == player && coordinates[1][2] != aiCharacter)
     {
         aiMove = '6';
         return aiMove;
     }
 
-    else if (coordinates[0][2] == player && coordinates[1][1] == player)
+    else if (coordinates[0][2] == player && coordinates[1][1] == player && coordinates[2][0] != aiCharacter)
     {
         aiMove = '7';
         return aiMove;
     }
-    else if (coordinates[0][2] == player && coordinates[2][0] == player)
+    else if (coordinates[0][2] == player && coordinates[2][0] == player && coordinates[1][1] != aiCharacter)
     {
         aiMove = '5';
         return aiMove;
     }
-    else if (coordinates[1][1] == player && coordinates[2][0] == player)
+    else if (coordinates[1][1] == player && coordinates[2][0] == player && coordinates[0][2] != aiCharacter)
     {
         aiMove = '3';
         return aiMove;
     }
 
-    else if (coordinates[1][0] == player && coordinates[1][1] == player)
+    else if (coordinates[1][0] == player && coordinates[1][1] == player && coordinates[1][2] != aiCharacter)
     {
         aiMove = '6';
         return aiMove;
     }
-    else if (coordinates[1][0] == player && coordinates[1][2] == player)
+    else if (coordinates[1][0] == player && coordinates[1][2] == player && coordinates[1][1] != aiCharacter)
     {
         aiMove = '5';
         return aiMove;
     }
-    else if (coordinates[1][1] == player && coordinates[1][2] == player)
+    else if (coordinates[1][1] == player && coordinates[1][2] == player && coordinates[1][0] != aiCharacter)
     {
         aiMove = '4';
         return aiMove;
     }
 
-    else if (coordinates[2][0] == player && coordinates[2][1] == player)
+    else if (coordinates[2][0] == player && coordinates[2][1] == player && coordinates[2][2] != aiCharacter)
     {
         aiMove = '9';
         return aiMove;
     }
-    else if (coordinates[2][0] == player && coordinates[2][2] == player)
+    else if (coordinates[2][0] == player && coordinates[2][2] == player && coordinates[2][1] != aiCharacter)
     {
         aiMove = '8';
         return aiMove;
     }
-    else if (coordinates[2][1] == player && coordinates[2][2] == player)
+    else if (coordinates[2][1] == player && coordinates[2][2] == player && coordinates[2][0] != aiCharacter)
     {
         aiMove = '7';
         return aiMove;
     }
-    /*
-    if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '1') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '2') != usedMovesVec.end())
-    {
-        aiMove = '3';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '1') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '3') != usedMovesVec.end())
-    {
-        aiMove = '2';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '2') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '3') != usedMovesVec.end())
-    {
-        aiMove = '1';
-        return aiMove;
-    }
-
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '1') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '5') != usedMovesVec.end())
-    {
-        aiMove = '9';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '1') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '9') != usedMovesVec.end())
-    {
-        aiMove = '5';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '5') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '9') != usedMovesVec.end())
-    {
-        aiMove = '1';
-        return aiMove;
-    }
-
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '1') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '4') != usedMovesVec.end())
-    {
-        aiMove = '7';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '1') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '7') != usedMovesVec.end())
-    {
-        aiMove = '4';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '4') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '7') != usedMovesVec.end())
-    {
-        aiMove = '1';
-        return aiMove;;
-    }
-
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '2') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '5') != usedMovesVec.end())
-    {
-        aiMove = '8';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '2') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '8') != usedMovesVec.end())
-    {
-        aiMove = '5';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '5') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '8') != usedMovesVec.end())
-    {
-        aiMove = '2';
-        return aiMove;;
-    }
-
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '3') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '6') != usedMovesVec.end())
-    {
-        aiMove = '9';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '3') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '9') != usedMovesVec.end())
-    {
-        aiMove = '6';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '6') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '9') != usedMovesVec.end())
-    {
-        aiMove = '3';
-        return aiMove;
-    }
-
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '3') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '5') != usedMovesVec.end())
-    {
-        aiMove = '7';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '3') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '7') != usedMovesVec.end())
-    {
-        aiMove = '5';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '5') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '7') != usedMovesVec.end())
-    {
-        aiMove = '3';
-        return aiMove;
-    }
-
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '4') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '5') != usedMovesVec.end())
-    {
-        aiMove = '6';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '4') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '6') != usedMovesVec.end())
-    {
-        aiMove = '5';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '5') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '6') != usedMovesVec.end())
-    {
-        aiMove = '4';
-        return aiMove;
-    }
-
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '7') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '8') != usedMovesVec.end())
-    {
-        aiMove = '9';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '7') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '9') != usedMovesVec.end())
-    {
-        aiMove = '8';
-        return aiMove;
-    }
-    else if (std::find(usedMovesVec.begin(), usedMovesVec.end(), '8') != usedMovesVec.end()
-        && std::find(usedMovesVec.begin(), usedMovesVec.end(), '9') != usedMovesVec.end())
-    {
-        aiMove = '7';
-        return aiMove;
-    }
-    */
 
     aiMoveVec.erase(std::remove(aiMoveVec.begin(), aiMoveVec.end(), aiMove), aiMoveVec.end());
     usedMovesVec.push_back(aiMove);
 
 }
+
+// checks to see if there are 3 x's or o's in a row
 bool checkWin()
 {
     std::string winMSG = "Congratulations on winning ";
@@ -447,9 +297,10 @@ int checkMove(char _playerChoice, char _player)
     else
     {
         cout << "Invalid move." << endl;
-        cout << playerChoice;
         cout << endl;
+        turnCounter--;
         playerMove();
+        
     }
 
     return 0;
@@ -459,7 +310,6 @@ int checkMove(char _playerChoice, char _player)
 // shows coordinates 1 - 9 that will be modified by checkMove()
 int drawBoard()
 {
-
 
     // creates a tic tac toe board 
     cout << "     " << "|" << "     " << "|" << "     " << endl
@@ -488,26 +338,21 @@ int drawBoard()
 int playerMove()
 {
 
+    cout << "Choose where you'd like to go: ";
     cin >> playerTurn;
 
     checkMove(playerTurn, player);
 
-    /*
-    if (turnCounter % 2 == 0)
-    {
-        player = 'X';
-        checkMove(playerMove, player);
-    }
-    else
-    {
-        player = 'O';
-        checkMove(playerMove, player);
-    }
-    */
-
     // removes player move from AI's possible move pool
     aiMoveVec.erase(std::remove(aiMoveVec.begin(), aiMoveVec.end(), playerTurn), aiMoveVec.end());
     usedMovesVec.push_back(playerTurn);
+    turnCounter++;
+
+    if (usedMovesVec.size() == 10 && aiMoveVec.size() == 0)//(aiMoveVec.size() == 0)
+    {
+        gameOver = true;
+        cout << "No more moves" << endl;
+    }
 
     return 0;
 }
@@ -516,10 +361,17 @@ int playerMove()
 int aiPlayer()
 {
     int odds = rand() & 10;
+    
+    if (turnCounter == 9)
+    {
+        gameOver = true;
+    }
+
     if (gameOver == false)
     {
         
         cout << "AI's Turn" << endl;
+
         int chooseAIMove = rand() % aiMoveVec.size();
         aiMove = aiMoveVec[chooseAIMove];
 
@@ -530,32 +382,19 @@ int aiPlayer()
         //checkPlayerWin();
         checkMove(aiMove, aiCharacter);
 
-        /*
-        if (turnCounter % 2 == 0)
-        {
-            //if (odds != 1)
-            //{
-                checkPlayerWin();
-            //}
-            aiCharacter = 'X';
-            checkMove(aiMove, aiCharacter);
-        }
-        else
-        {
-            //if (odds != 1)
-            //{
-                checkPlayerWin();
-            //}
-            aiCharacter = 'O';
-            checkMove(aiMove, aiCharacter);
-        }
-        */
-
         // removes the AI's previously used moves
         aiMoveVec.erase(std::remove(aiMoveVec.begin(), aiMoveVec.end(), aiMove), aiMoveVec.end());
         usedMovesVec.push_back(aiMove);
+        
+        turnCounter++;
+
     }
 
+    if (turnCounter == 9 || aiMoveVec.size() == 0 && usedMovesVec.size() == 9)
+    {
+        gameOver = true;
+        cout << "No more moves" << endl;
+    }
 
     return 0;
 
@@ -582,16 +421,19 @@ int main()
     {
         player = 'X';
         aiCharacter = 'O';
+        counterAdjust = 1;
     }
     else if (turnOrder == 2)
     {
         player = 'O';
         aiCharacter = 'X';
+        counterAdjust = 2;
     }
     else
     {
         player = 'X';
         aiCharacter = 'O';
+        counterAdjust = 1;
     }
 
     // makes a big boi spacer
@@ -603,24 +445,39 @@ int main()
 
     do
     {
-        drawBoard();
-        cout << endl;
 
-        cout << "Choose where you'd like to go: ";
-        playerMove();
-        turnCounter++;
+        if (counterAdjust == 1)
+        {
+            
+            drawBoard();
+            cout << endl;
+            playerMove();
+            //turnCounter++;
+            if (gameOver != true)
+            {
+                drawBoard();
+            }
 
-        cout << endl;
+            cout << endl;
 
-        //drawBoard();
-        cout << endl;
-        //cout << "AI's turn: ";
-        aiPlayer();
-        cout << endl;
+            aiPlayer();
+            cout << endl;
 
-
-        turnCounter++;
-
+            //turnCounter++;
+        }
+        else if (counterAdjust == 2)
+        {
+            aiPlayer();
+            cout << endl;
+            //turnCounter++;
+            
+            if (gameOver != true)
+            {
+                drawBoard();
+                playerMove();
+            }
+            //turnCounter++;
+        }
 
         if (turnCounter == 9)
         {
@@ -631,4 +488,3 @@ int main()
     drawBoard();
 
 }
-
